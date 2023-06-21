@@ -1,6 +1,7 @@
 name: Challenge2020+
 
 on: create
+
 jobs:
     runs-on: [self-hosted]
     steps:
