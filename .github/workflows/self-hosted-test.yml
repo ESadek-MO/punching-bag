@@ -3,6 +3,7 @@ name: Challenge2020+
 on: create
 
 jobs:
+  foo:
     runs-on: [self-hosted]
     steps:
       - name: dunno
