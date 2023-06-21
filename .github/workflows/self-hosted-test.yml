@@ -2,7 +2,7 @@ name: Challenge2020+
 
 on: create
 jobs:
-    runs-on: self-hosted
+    runs-on: [self-hosted]
     steps:
       - name: dunno
         run: echo "Hello world"
