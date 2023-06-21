@@ -1,52 +1,52 @@
-name: Challenge2020+
-
-env:
-  TARGET_REPORT_DIR: "/home/h06/avd/public_html/challenge2020plus"
-  PY_FILE_DIR: "/"
-  CLA_OPTIONS: ""
-
-on:
-  schedule:
-    # 6:35 every weekday
-    cron: '35 06 * * 1-5'
-jobs:
-    runs-on: ubuntu-latest # self-hosted
-    steps:
-      - name: create-env
-        run:
-          conda activate
-          conda install -c conda-forge python>3.10 datapane pygithub plotly
-      # Runs main python file
-      - name: run-python
-        run: python ${{ env.PY_FILE_DIR }}/challenge2020plus.py ${{ env.CLA_OPTIONS }}
-      # Copies output to target directory
-      - name: move-to-html-loc
-        run: cp - r challenge2020plus.html ${{ env.TARGET_REPORT_DIR }}
-      # Emails support when a previous step fails
-      - name: email-trem
-        uses: dawidd6/action-send-mail@v3
-        if: ${{ failure() }}
-        with:
-          server_address: smtp.office365.com
-          server_port: 587
-          username: ${{ secrets.SUPPORT_USER }}
-          password: ${{ secrets.SUPPORT_PASS }}
-          subject: Challenge2020+ Failure
-          # Can figure out how to use ID to specify which step
-          body: Challenge2020+ has had a failure ${{ github.event_path }}
-          # setup secrets
-          to: ${{ secrets.SUPPORT_ADDRESS }}
-          from: ${{ secrets.SUPPORT_ADDRESS }}
-      - name: save-logs
-        uses: actions/checkout@v3
-        if: always()
-
-      - name: upload-logs
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: logs
-          path: path/to/logs.txt
+#name: Challenge2020+
+#
+#env:
+#  TARGET_REPORT_DIR: "/home/h06/avd/public_html/challenge2020plus"
+#  PY_FILE_DIR: "/"
+#  CLA_OPTIONS: ""
+#
+#on:
+#  schedule:
+#    # 6:35 every weekday
+#    cron: '35 06 * * 1-5'
+#jobs:
+#    runs-on: ubuntu-latest # self-hosted
+#    steps:
+#      - name: create-env
+#        run:
+#          conda activate
+#          conda install -c conda-forge python>3.10 datapane pygithub plotly
+#      # Runs main python file
+#      - name: run-python
+#        run: python ${{ env.PY_FILE_DIR }}/challenge2020plus.py ${{ env.CLA_OPTIONS }}
+#      # Copies output to target directory
+#      - name: move-to-html-loc
+#        run: cp - r challenge2020plus.html ${{ env.TARGET_REPORT_DIR }}
+#      # Emails support when a previous step fails
+#      - name: email-trem
+#        uses: dawidd6/action-send-mail@v3
+#        if: ${{ failure() }}
+#        with:
+#          server_address: smtp.office365.com
+#          server_port: 587
+#          username: ${{ secrets.SUPPORT_USER }}
+#          password: ${{ secrets.SUPPORT_PASS }}
+#          subject: Challenge2020+ Failure
+#          # Can figure out how to use ID to specify which step
+#          body: Challenge2020+ has had a failure ${{ github.event_path }}
+#          # setup secrets
+#          to: ${{ secrets.SUPPORT_ADDRESS }}
+#          from: ${{ secrets.SUPPORT_ADDRESS }}
+#      - name: save-logs
+#        uses: actions/checkout@v3
+#        if: always()
+#
+#      - name: upload-logs
+#        uses: actions/upload-artifact@v3
+#        if: always()
+#        with:
+#          name: logs
+#          path: path/to/logs.txt
 
 
 
