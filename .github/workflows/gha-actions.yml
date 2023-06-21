@@ -4,7 +4,7 @@ on: create
 
 jobs:
   foo:
-    runs-on: [self-hosted]
+    runs-on: ubuntu
     steps:
       - name: dunno
-        run: echo "Hello world"
+        run: python stage-one.py

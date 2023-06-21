@@ -47,26 +47,26 @@
 #        with:
 #          name: logs
 #          path: path/to/logs.txt
-
-
-
-# notes:
-
-
-  # figure out how to access internal files = 4hr
-  # investigate upload artifact for log files = 1hr (alt; change to print statements)
-  # fill in user, pass, address for email sending = 30mins
-
-  # separate python files = 4hr
-
-  # update logging method in gd = 8hr (SG)
-
-
-
-
-#      # Checks scratch is available
-#      - name: check-scratch
-#        #! CHECK AND CHANGE ME
-#        run:
-#          PROBE=$([ -d ${SCRATCH} ] && echo "true" || echo "false")
-#          [ "${PROBE}
+#
+#
+#
+## notes:
+##
+##
+##   figure out how to access internal files = 4hr
+##   investigate upload artifact for log files = 1hr (alt; change to print statements)
+##   fill in user, pass, address for email sending = 30mins
+##
+##   separate python files = 4hr
+##
+##   update logging method in gd = 8hr (SG)
+##
+##
+##
+##
+##      # Checks scratch is available
+##      - name: check-scratch
+##        #! CHECK AND CHANGE ME
+##        run:
+##          PROBE=$([ -d ${SCRATCH} ] && echo "true" || echo "false")
+##          [ "${PROBE}
